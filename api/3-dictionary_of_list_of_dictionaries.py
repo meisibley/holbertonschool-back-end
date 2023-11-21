@@ -6,11 +6,11 @@ import json
 import requests
 
 
-def export_all_data_to_json(employee_id):
+def export_all_data_to_json():
     '''records all tasks from all employees'''
     # set variables
     users_and_tasks = {}
-    site_str = 'https://jsonplaceholder.typicode.com/users/'
+    site_str = 'https://jsonplaceholder.typicode.com/'
     user_str = site_str + 'users'
     todo_str = site_str + 'todos'
 
@@ -27,7 +27,7 @@ def export_all_data_to_json(employee_id):
             users_and_tasks[task['userId']] = []
         task_dict = {}
         task_dict['task'] = task['title']
-        task_dict['username'] = user_data[tasks['userId']]
+        task_dict['username'] = user_data[task['userId']]
         task_dict['completed'] = task['completed']
         users_and_tasks[task['userId']].append(task_dict)
 

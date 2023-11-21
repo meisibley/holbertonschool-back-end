@@ -13,6 +13,7 @@ def export_data_to_json(employee_id):
     user_str = site_str + '{}'.format(employee_id)
     todo_str = site_str + '{}/todos'.format(employee_id)
 
+    '''get requests'''
     user_res = requests.get(user_str)
     todo_res = requests.get(todo_str)
 
@@ -22,6 +23,7 @@ def export_data_to_json(employee_id):
 
     u_dict[employee_id] = []
 
+    '''get user dictory'''
     for task in todosJson:
         task_dict = {}
         task_dict['task'] = task.get('title')

@@ -12,8 +12,10 @@ def gather_data_fr_API(employee_id):
     employee_url = f"{url}/users/{employee_id}"
     todo_url = f"{url}/users/{employee_id}/todos"
 
-    employee_data = requests.get(employee_url).json()
-    todo_data = requests.get(todo_url).json()
+    employee_requ = requests.get(employee_url)
+    employee_data = employee_requ.json()
+    todo_requ =requests.get(todo_url)
+    todo_data = todo_requ.json()
 
     e_name = employee_data.get("name")
     finished_tasks = [task["title"] for task in todo_data if task["completed"]]

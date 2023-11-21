@@ -14,7 +14,7 @@ def gather_data_fr_API(employee_id):
 
     employee_requ = requests.get(employee_url)
     employee_data = employee_requ.json()
-    todo_requ =requests.get(todo_url)
+    todo_requ = requests.get(todo_url)
     todo_data = todo_requ.json()
 
     e_name = employee_data.get("name")

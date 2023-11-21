@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''using task0 to export data into CSV format'''
+import csv
 import requests
 import sys
-import csv
 
 
 def export_data_to_csv(employee_id):

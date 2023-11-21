@@ -16,6 +16,7 @@ def export_data_to_json(employee_id):
     user_res = requests.get(user_str)
     todo_res = requests.get(todo_str)
 
+    '''from requests get json'''
     userName = user_res.json().get('username')
     todosJson = todo_res.json()
 
@@ -29,6 +30,7 @@ def export_data_to_json(employee_id):
 
         u_dict[employee_id].append(task_dict)
 
+    '''open and write JSON file'''
     with open('{}.json'.format(employee_id), 'w') as jsonFile:
         json.dump(u_dict, jsonFile)
 

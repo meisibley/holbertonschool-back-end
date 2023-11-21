@@ -29,5 +29,4 @@ def gather_data_fr_API(employee_id):
 if __name__ == "__main__":
     from sys import argv
 
-
     gather_data_fr_API(int(sys.argv[1]))

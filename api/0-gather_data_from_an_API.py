@@ -4,6 +4,7 @@ for a given employee ID, returns information
 about his/her TODO list progress.
 '''
 import requests
+from sys import argv
 
 
 def gather_data_fr_API(employee_id):
@@ -13,8 +14,8 @@ def gather_data_fr_API(employee_id):
     todo_url = f"{url}/users/{employee_id}/todos"
 
     employee_requ = requests.get(employee_url)
-    employee_data = employee_requ.json()
     todo_requ = requests.get(todo_url)
+    employee_data = employee_requ.json()
     todo_data = todo_requ.json()
 
     e_name = employee_data.get("name")
@@ -29,6 +30,5 @@ def gather_data_fr_API(employee_id):
 
 
 if __name__ == "__main__":
-    from sys import argv
-
-    gather_data_fr_API(int(sys.argv[1]))
+    emplye_id = int(sys.argv[1])
+    gather_data_fr_API(emplye_id)

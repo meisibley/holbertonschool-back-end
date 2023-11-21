@@ -7,33 +7,36 @@ import requests
 from sys import argv
 
 
-def gather_data_fr_api(employee_id):
-    '''accept employee ID, and display the employee TODO list'''
+def get_employee_tasks(employee_id):
+    """returns info about his/her TODO list progress with given employee ID"""
+    # set up vars
     name = ''
     task_list = []
-    counter = 0
-    site_str = 'https://jsonplaceholder.typicode.com/users/'
-    user_str = site_str + '{}'.format(employee_id)
-    todo_str = site_str + '{}/todos'.format(employee_id)
+    completed_counter = 0
+    site_string = 'https://jsonplaceholder.typicode.com/users/'
+    ustr = site_string + '{}'.format(employee_id)
+    tstr = site_string + '{}/todos'.format(employee_id)
 
-    usersRes = requests.get(user_str)
-    todosRes = requests.get(todo_str)
+    # get requests
+    usersRes = requests.get(ustr)
+    todosRes = requests.get(tstr)
 
+    # get json from requests
     name = usersRes.json().get('name')
 
     todosJson = todosRes.json()
 
-    for task in todosJson:
-        if task.get('completed') is True:
-            counter += 1
-            task_list.append(task.get('title'))
+    for tasks in todosJson:
+        if tasks.get('completed') is True:
+            completed_counter += 1
+            task_list.append(tasks.get('title'))
 
     print('Employee {} is done with tasks({}/{}):'
-          .format(name, counter, len(todosJson)))
+          .format(name, completed_counter, len(todosJson)))
 
-    for t in task_list:
-        print('\t {}'.format(t))
+    for ttl in task_list:
+        print('\t {}'.format(ttl))
     return
 
 if __name__ == "__main__":
-    gather_data_fr_api(sys.argv[1])
+    get_employee_tasks(sys.argv[1])

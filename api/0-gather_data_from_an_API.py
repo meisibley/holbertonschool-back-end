@@ -15,13 +15,13 @@ def gather_data_fr_API(employee_id):
     employee_data = requests.get(employee_url).json()
     todo_data = requests.get(todo_url).json()
 
-    employee_name = employee_data.get("name")
+    e_name = employee_data.get("name")
     finished_tasks = [task["title"] for task in todo_data if task["completed"]]
     done_tasks = len(finished_tasks)
     total_tasks = len(todo_data)
 
     print("Employee {} is done with tasks({}/{}):"
-          .format(employee_name, done_tasks, total_tasks))
+          .format(e_name, done_tasks, total_tasks))
     for t in finished_tasks:
         print(f"\t {t}")
 

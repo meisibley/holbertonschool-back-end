@@ -19,11 +19,11 @@ def export_data_to_csv(employee_id):
     userName = user_res.json().get('username')
     todosJson = todo_res.json()
 
-    for tasks in todosJson:
+    for task in todosJson:
         task_rows = [employee_id]
         task_rows.append(userName)
-        task_rows.append(tasks.get('completed'))
-        task_rows.append(tasks.get('title'))
+        task_rows.append(task.get('completed'))
+        task_rows.append(task.get('title'))
 
         ttl_tasks.append(task_rows)
 

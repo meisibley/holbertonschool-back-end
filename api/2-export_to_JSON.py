@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''using task0, extend python script to export
-data in the JSON format
+data in the JSON format Module
 '''
 import json
 import requests
@@ -31,7 +31,7 @@ def export_data_to_json(employee_id):
         task_dict = {}
         task_dict['task'] = task.get('title')
         task_dict['username'] = userName
-        task_dict['completed'] task.get('completed')
+        task_dict['completed'] = task.get('completed')
 
         u_dict[employee_id].append(task_dict)
 
